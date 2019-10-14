@@ -6,17 +6,17 @@
     <description>Recent content in Posts on Jayce Wong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 13 Oct 2019 22:00:12 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2019 21:04:03 +0800</lastBuildDate>
     
 	<atom:link href="https://sysujayce.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>面试复习</title>
-      <link>https://sysujayce.github.io/posts/tp-linkjobinterview/</link>
-      <pubDate>Sun, 13 Oct 2019 22:00:12 +0800</pubDate>
+      <title>IntelligentInterview</title>
+      <link>https://sysujayce.github.io/posts/intelligentinterview/</link>
+      <pubDate>Mon, 14 Oct 2019 21:04:03 +0800</pubDate>
       
-      <guid>https://sysujayce.github.io/posts/tp-linkjobinterview/</guid>
+      <guid>https://sysujayce.github.io/posts/intelligentinterview/</guid>
       <description>智力题  烧绳子：有若材质一样的干根不均匀绳子，烧完一根需要1h，如何计时得到75min, 15min, 30min?
  既然不均匀，那就代表不能通过长度来直接得到30min，15min
 30min：一根绳子从头烧到尾需要1h，那从两边往中间烧的话只需要30min；

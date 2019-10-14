@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Jayce Wong&#39;s Blog</title>
+    <link>http://www.jaycewong.xyz/posts/</link>
+    <description>Recent content in Posts on Jayce Wong&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 13 Oct 2019 22:00:12 +0800</lastBuildDate>
+    
+	<atom:link href="http://www.jaycewong.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TP LinkJobInterview</title>
+      <link>http://www.jaycewong.xyz/posts/tp-linkjobinterview/</link>
+      <pubDate>Sun, 13 Oct 2019 22:00:12 +0800</pubDate>
+      
+      <guid>http://www.jaycewong.xyz/posts/tp-linkjobinterview/</guid>
+      <description>智力题  烧绳子：有若材质一样的干根不均匀绳子，烧完一根需要1h，如何计时得到75min, 15min, 30min?
+ 既然不均匀，那就代表不能通过长度来直接得到30min，15min
+30min：一根绳子从头烧到尾需要1h，那从两边往中间烧的话只需要30min；
+15min：将绳子1的两头点燃，同时点燃绳子2的左端，当绳子1燃尽的时候过了30min，此时点燃绳子2的右端，并开始计时，当绳子2燃尽的时候就得到了15min；
+75min_1：可以在得到15min之后马上点燃另一根绳子，等该绳子燃尽就可以得到75min；
+75min_2：将绳子1的两头点燃，同时点燃绳子2的左端并计时，当绳子1燃尽的时候过了30min，此时点燃绳子2的右端，当绳子2燃尽的时候就得到了45min；然后再点燃绳子3的两端，当绳子3燃尽的时候就得到了75min；
+ 老鼠喝毒酒：有1000桶酒,其中1桶有毒.而一旦吃了,毒性会在1周后发作.现在我们用小老鼠做实验,要在1周内找出那桶毒酒,问最少需要多少老鼠?
+ 首先利用二进制将每桶酒进行编号，1000桶酒就需要2^10才能表示，因此需要10位。
+在确定了如何对每桶酒进行编号之后，我们现在就需要确定毒酒的二进制表示中的每一位是什么。
+如果我们将1000桶酒按照二进制中第k位是否为1进行划分，然后让老鼠k去喝第k位为1的所有酒，如果老鼠k死去，证明毒酒的第k位为1，否则第k位为0.
+由于我们一共用了10位来表示毒酒，因此需要10只老鼠即可判断哪一桶是毒酒。
+ 猜纸牌：有9张纸牌，分别为1至9。A、B、C、D四人取牌，每人取2张。现已知A取的两张牌之和是10;B取的两张牌之差是1;C取的两张牌之积是24;D取的荫张牌之商是3。请说出他们四人各拿了哪两张纸牌;剩下的一张又是什么牌?</description>
+    </item>
+    
+    <item>
+      <title>leetcode 72: 最小编辑距离</title>
+      <link>http://www.jaycewong.xyz/posts/shortesteditdistance/</link>
+      <pubDate>Fri, 11 Oct 2019 23:33:58 +0800</pubDate>
+      
+      <guid>http://www.jaycewong.xyz/posts/shortesteditdistance/</guid>
+      <description>题目描述：
+给定两个单词 word1 和 word2，计算出将 word1 转换成 word2 所使用的最少操作数 。
+你可以对一个单词进行如下三种操作：
+插入一个字符 删除一个字符 替换一个字符 示例 1:
+输入: word1 = &amp;ldquo;horse&amp;rdquo;, word2 = &amp;ldquo;ros&amp;rdquo; 输出: 3 解释: horse -&amp;gt; rorse (将 &amp;lsquo;h&amp;rsquo; 替换为 &amp;lsquo;r&amp;rsquo;) rorse -&amp;gt; rose (删除 &amp;lsquo;r&amp;rsquo;) rose -&amp;gt; ros (删除 &amp;lsquo;e&amp;rsquo;) 示例 2:</description>
+    </item>
+    
+    <item>
+      <title>leetcode 409：给定字符串，求能重组成的最长回文字符串</title>
+      <link>http://www.jaycewong.xyz/posts/longestpalindromicsubsequence/</link>
+      <pubDate>Fri, 11 Oct 2019 22:45:57 +0800</pubDate>
+      
+      <guid>http://www.jaycewong.xyz/posts/longestpalindromicsubsequence/</guid>
+      <description># -*- coding: utf-8 -*- # @Time : 2019-10-11 10:56 # @Author : Jayce Wong # @ProjectName : job # @FileName : longestPalindrome.</description>
+    </item>
+    
+  </channel>
+</rss>

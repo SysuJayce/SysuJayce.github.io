@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>leetcode 72: 最小编辑距离 | Jayce Wong&#39;s Blog</title>
+    <meta property="og:title" content="leetcode 72: 最小编辑距离 - Jayce Wong&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-10-11T23:33:58&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-10-11T23:33:58&#43;08:00">
+        
+    <meta name="Keywords" content="Linux, Python, Machine Learning, Deep Learning, Data Mining">
+    <meta name="description" content="leetcode 72: 最小编辑距离">
+        
+    <meta name="author" content="Jayce">
+    <meta property="og:url" content="http://www.jaycewong.xyz/posts/shortesteditdistance/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://www.jaycewong.xyz">
+                        Jayce Wong&#39;s Blog
+                    </a>
+                
+                <p class="description">命运馈赠的礼物，你早已暗中支付了筹码</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="http://www.jaycewong.xyz">首页</a>
+                    
+                    <a  href="http://www.jaycewong.xyz/archives/" title="归档">归档</a>
+                    
+                    <a  href="http://www.jaycewong.xyz/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">leetcode 72: 最小编辑距离</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年10月11日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="http://www.jaycewong.xyz/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95">数据结构算法</a></span>
+                            
+                        </div>
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            <p>题目描述：</p>
+
+<p>给定两个单词 word1 和 word2，计算出将 word1 转换成 word2 所使用的最少操作数 。</p>
+
+<p>你可以对一个单词进行如下三种操作：</p>
+
+<p>插入一个字符
+删除一个字符
+替换一个字符
+示例 1:</p>
+
+<p>输入: word1 = &ldquo;horse&rdquo;, word2 = &ldquo;ros&rdquo;
+输出: 3
+解释:
+horse -&gt; rorse (将 &lsquo;h&rsquo; 替换为 &lsquo;r&rsquo;)
+rorse -&gt; rose (删除 &lsquo;r&rsquo;)
+rose -&gt; ros (删除 &lsquo;e&rsquo;)
+示例 2:</p>
+
+<p>输入: word1 = &ldquo;intention&rdquo;, word2 = &ldquo;execution&rdquo;
+输出: 5
+解释:
+intention -&gt; inention (删除 &rsquo;t&rsquo;)
+inention -&gt; enention (将 &lsquo;i&rsquo; 替换为 &lsquo;e&rsquo;)
+enention -&gt; exention (将 &lsquo;n&rsquo; 替换为 &lsquo;x&rsquo;)
+exention -&gt; exection (将 &lsquo;n&rsquo; 替换为 &lsquo;c&rsquo;)
+exection -&gt; execution (插入 &lsquo;u&rsquo;)</p>
+
+<pre><code># -*- coding: utf-8 -*-
+# @Time         : 2019-09-22 16:51
+# @Author       : Jayce Wong
+# @ProjectName  : job
+# @FileName     : 72-editDistance.py
+# @Blog         : https://blog.51cto.com/jayce1111
+# @Github       : https://github.com/SysuJayce
+
+
+class Solution:
+    &quot;&quot;&quot;
+    从word1-&gt;word2，对于word1的每个字符，可以有插入、删除、替换三种操作。
+    碰到这种题我们应该先想到的是这是一道可以用动态规划解决的问题，因为我们是要从一个复杂的问题中
+    求解一个最优值，而这个复杂问题可以分解成多个子问题。例如，我们已经将word1[:-1]到word2的最小
+    编辑距离找到了，那么再计算word1-&gt;word2的编辑距离的时候就会变得容易许多。
+
+    既然已经知道要用到动态规划，那么动态规划的解题步骤就是先找出状态转移方程，然后对状态进行初始化
+
+    假设dp[i][j]代表将word1[:i] -&gt; word2[:j]所需的最小编辑距离，那么当我们已知dp[i-1][j-1]
+    的时候，要求dp[i][j]的话可以有以下两种情况：
+    1. word1[i - 1] == word2[j - 1]:
+        这种情况我们不需要对word1[i-1]做任何操作，等价于dp[i-1][j-1]
+        即：dp[i][j] = dp[i-1][j-1]
+    2. word1[i - 1] != word2[j - 1]:
+        这时候我们要想到，我们已经用一个二维的状态矩阵保存了不同情况下的最优值，应该要想办法利用已
+        知的最优值来找到当前状态的最优值。
+
+        a) 删除
+        由于我们已知dp[i - 1][j]，这代表了将word1[: i - 1]-&gt;word2[: j]的最小编辑距离，
+        如果我们先将word1[: i - 1]-&gt;word2[: j]，然后将word1[i - 1]删除，那么就可以实现
+        word1[:i] -&gt; word2[:j].
+        因此，dp[i][j] = dp[i - 1][j] + 1；
+        b) 插入
+        由于我们已知dp[i][j - 1]，这代表了将word1[: i]-&gt;word2[: j - 1]的最小编辑距离，
+        如果我们先将word1[: i]-&gt;word2[: j - 1]，然后再在word1[: i]后面增加word2[j - 1]
+        那么就可以实现word1[:i] -&gt; word2[:j]。
+        因此，dp[i][j] = dp[i][j - 1] + 1
+        c) 替换
+        由于我们已知dp[i - 1][j - 1]，这代表了将word1[: i - 1]-&gt;word2[: j - 1]的
+        最小编辑距离，如果我们先将word1[: i - 1]-&gt;word2[: j - 1]，然后再将word1[i]替换成
+        word2[j]，那么就可以实现word1[:i] -&gt; word2[:j]。
+        那么也可以实现word1[:i] -&gt; word2[:j]。
+        因此，dp[i][j] = dp[i - 1][j - 1] + 1
+        
+        上述的a)b)c)都是可行的，而我们需要的是最小的编辑距离，因此就需要从上述的三种操作中选择
+        最小的一种
+    &quot;&quot;&quot;
+    def minDistance(self, word1: str, word2: str) -&gt; int:
+        rows = len(word1)
+        cols = len(word2)
+        # 初始化状态矩阵
+        dp = [[0] * cols for _ in range(rows)]
+        for i in range(cols):
+            dp[0][i] = i
+        for j in range(rows):
+            dp[j][0] = j
+
+        # 根据状态转换方程进行状态更新
+        for i in range(1, rows):
+            for j in range(1, cols):
+                if word1[i - 1] == word2[j - 1]:
+                    dp[i][j] = dp[i - 1][j - 1]
+                else:
+                    dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1],
+                                       dp[i - 1][j - 1])
+
+        # 动态规划的最后一个状态就是我们需要的结果
+        return dp[-1][-1]
+
+</code></pre>
+
+                        </div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="http://www.jaycewong.xyz">Jayce</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="http://www.jaycewong.xyz/posts/shortesteditdistance/">http://www.jaycewong.xyz/posts/shortesteditdistance/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/longestpalindromicsubsequence/">leetcode 409：给定字符串，求能重组成的最长回文字符串</a></li>
+        
+        <li><a href="/about/">关于我</a></li>
+        
+        <li><a href="/archives/">归档</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="http://www.jaycewong.xyz/tags/leetcode">leetcode</a></li>
+                                
+                                <li><a href="http://www.jaycewong.xyz/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">动态规划</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "SysuJayce/blogComment"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="http://www.jaycewong.xyz">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://www.jaycewong.xyz/posts/tp-linkjobinterview/" title="TP LinkJobInterview">TP LinkJobInterview</a>
+    </li>
+    
+    <li>
+        <a href="http://www.jaycewong.xyz/posts/shortesteditdistance/" title="leetcode 72: 最小编辑距离">leetcode 72: 最小编辑距离</a>
+    </li>
+    
+    <li>
+        <a href="http://www.jaycewong.xyz/posts/longestpalindromicsubsequence/" title="leetcode 409：给定字符串，求能重组成的最长回文字符串">leetcode 409：给定字符串，求能重组成的最长回文字符串</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://www.jaycewong.xyz/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/">数据结构算法(2)</a>
+    </li>
+    
+    <li>
+        <a href="http://www.jaycewong.xyz/categories/%E9%9D%A2%E7%BB%8F/">面经(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="http://www.jaycewong.xyz/tags/leetcode/">leetcode</a>
+    
+    <a href="http://www.jaycewong.xyz/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+    
+    <a href="http://www.jaycewong.xyz/tags/%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/">回文字符串</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://www.jaycewong.xyz/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="http://www.jaycewong.xyz">Jayce Wong&#39;s Blog By Jayce</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+</body>
+</html>

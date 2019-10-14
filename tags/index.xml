@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Jayce Wong&#39;s Blog</title>
-    <link>http://www.jaycewong.xyz/tags/</link>
+    <link>https://sysujayce.github.io/tags/</link>
     <description>Recent content in Tags on Jayce Wong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 11 Oct 2019 23:33:58 +0800</lastBuildDate>
     
-	<atom:link href="http://www.jaycewong.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sysujayce.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>leetcode</title>
-      <link>http://www.jaycewong.xyz/tags/leetcode/</link>
+      <link>https://sysujayce.github.io/tags/leetcode/</link>
       <pubDate>Fri, 11 Oct 2019 23:33:58 +0800</pubDate>
       
-      <guid>http://www.jaycewong.xyz/tags/leetcode/</guid>
+      <guid>https://sysujayce.github.io/tags/leetcode/</guid>
       <description></description>
     </item>
     
     <item>
       <title>动态规划</title>
-      <link>http://www.jaycewong.xyz/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
+      <link>https://sysujayce.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
       <pubDate>Fri, 11 Oct 2019 23:33:58 +0800</pubDate>
       
-      <guid>http://www.jaycewong.xyz/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
+      <guid>https://sysujayce.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
       <description></description>
     </item>
     
     <item>
       <title>回文字符串</title>
-      <link>http://www.jaycewong.xyz/tags/%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+      <link>https://sysujayce.github.io/tags/%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
       <pubDate>Fri, 11 Oct 2019 22:45:57 +0800</pubDate>
       
-      <guid>http://www.jaycewong.xyz/tags/%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
+      <guid>https://sysujayce.github.io/tags/%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
       <description></description>
     </item>
     

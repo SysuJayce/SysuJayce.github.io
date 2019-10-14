@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>leetcode on Jayce Wong&#39;s Blog</title>
-    <link>http://www.jaycewong.xyz/tags/leetcode/</link>
+    <link>https://sysujayce.github.io/tags/leetcode/</link>
     <description>Recent content in leetcode on Jayce Wong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 11 Oct 2019 23:33:58 +0800</lastBuildDate>
     
-	<atom:link href="http://www.jaycewong.xyz/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sysujayce.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>leetcode 72: 最小编辑距离</title>
-      <link>http://www.jaycewong.xyz/posts/shortesteditdistance/</link>
+      <link>https://sysujayce.github.io/posts/shortesteditdistance/</link>
       <pubDate>Fri, 11 Oct 2019 23:33:58 +0800</pubDate>
       
-      <guid>http://www.jaycewong.xyz/posts/shortesteditdistance/</guid>
+      <guid>https://sysujayce.github.io/posts/shortesteditdistance/</guid>
       <description>题目描述：
 给定两个单词 word1 和 word2，计算出将 word1 转换成 word2 所使用的最少操作数 。
 你可以对一个单词进行如下三种操作：
@@ -26,10 +26,10 @@
     
     <item>
       <title>leetcode 409：给定字符串，求能重组成的最长回文字符串</title>
-      <link>http://www.jaycewong.xyz/posts/longestpalindromicsubsequence/</link>
+      <link>https://sysujayce.github.io/posts/longestpalindromicsubsequence/</link>
       <pubDate>Fri, 11 Oct 2019 22:45:57 +0800</pubDate>
       
-      <guid>http://www.jaycewong.xyz/posts/longestpalindromicsubsequence/</guid>
+      <guid>https://sysujayce.github.io/posts/longestpalindromicsubsequence/</guid>
       <description># -*- coding: utf-8 -*- # @Time : 2019-10-11 10:56 # @Author : Jayce Wong # @ProjectName : job # @FileName : longestPalindrome.</description>
     </item>
     

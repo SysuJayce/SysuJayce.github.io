@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>leetcode 409：给定字符串，求能重组成的最长回文字符串 | Jayce Wong&#39;s Blog</title>
-    <meta property="og:title" content="leetcode 409：给定字符串，求能重组成的最长回文字符串 - Jayce Wong&#39;s Blog">
+    <title>leetcode 516. 最长回文子序列 | Jayce Wong&#39;s Blog</title>
+    <meta property="og:title" content="leetcode 516. 最长回文子序列 - Jayce Wong&#39;s Blog">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content="2019-10-11T22:45:57&#43;08:00">
@@ -17,7 +17,7 @@
     <meta property="article:modified_time" content="2019-10-11T22:45:57&#43;08:00">
         
     <meta name="Keywords" content="Linux, Python, Machine Learning, Deep Learning, Data Mining">
-    <meta name="description" content="leetcode 409：给定字符串，求能重组成的最长回文字符串">
+    <meta name="description" content="leetcode 516. 最长回文子序列">
         
     <meta name="author" content="Jayce">
     <meta property="og:url" content="https://sysujayce.github.io/posts/longestpalindromicsubsequence/">
@@ -74,7 +74,7 @@
                 <div class="res-cons">
                     <article class="post">
                         <header>
-                            <h1 class="post-title">leetcode 409：给定字符串，求能重组成的最长回文字符串</h1>
+                            <h1 class="post-title">leetcode 516. 最长回文子序列</h1>
                         </header>
                         <date class="post-meta meta-date">
                             2019年10月11日
@@ -94,53 +94,89 @@
                         
                         
                         <div class="post-content">
-                            <pre><code># -*- coding: utf-8 -*-
-# @Time         : 2019-10-11 10:56
+                            
+
+<h2 id="题目描述">题目描述</h2>
+
+<p>给定一个字符串<code>s</code>，找到其中最长的回文子序列</p>
+
+<p><strong>示例 1:</strong>
+输入:</p>
+
+<pre><code>&quot;bbbab&quot;
+</code></pre>
+
+<p>输出:</p>
+
+<pre><code>4
+</code></pre>
+
+<p>一个可能的最长回文子序列为 &ldquo;bbbb&rdquo;。</p>
+
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+# @Time         : 2019-10-11 11:58
 # @Author       : Jayce Wong
 # @ProjectName  : job
-# @FileName     : longestPalindrome.py
-# @Blog         : https://blog.51cto.com/jayce1111
+# @FileName     : longestPalindromicSubsequence.py
+# @Blog         : https://sysujayce.github.io/
 # @Github       : https://github.com/SysuJayce
-
-
-&quot;&quot;&quot;
-Given a string which consists of lowercase or uppercase letters, find the
-length of the longest palindromes that can be built with those letters.
-
-This is case sensitive, for example &quot;Aa&quot; is not considered a palindrome here.
-
-Note:
-Assume the length of given string will not exceed 1,010.
-
-Example:
-
-Input:
-&quot;abccccdd&quot;
-
-Output:
-7
-
-Explanation:
-One longest palindrome that can be built is &quot;dccaccd&quot;, whose length is 7.
-&quot;&quot;&quot;
 
 
 class Solution:
     &quot;&quot;&quot;
-    给定一个字符串，问其中的字符最多能组成多长的回文字符串？
+    dp[i][j]表示s[i: j + 1]的最长回文子序列长度
 
-    其实我们可以这样想，所谓的回文字符串，就是从左到右和从右到左的遍历是一样的，那么就是说，
-    每个字符都需要出现偶数次，当然，如果是奇数长度的回文字符串，其中间的字符可以是只出现了一次。
+    若s[i] == s[j]，则dp[i][j] = dp[i + 1][j - 1] + 2 【即将头尾去掉】
+    若s[i] != s[j]，则dp[i][j] = max(dp[i + 1][j], dp[i][j - 1]) 【即分别去头和去尾，求最大】
 
-    也就是说，我们只需要判断给定的字符串中各个字符的出现次数，把偶数次的字符挑出来，然后从奇数次的
-    字符中找一个(如果存在出现次数为奇数的字符的话)，这些字符就能组成最长的回文字符串。
+    dp[i][i] = 1，因为s[i: i + 1]总是一个回文字符串，长度为1
     &quot;&quot;&quot;
-    def longestPalindrome(self, s: str) -&gt; int:
-        from collections import Counter
-        # 找出所有奇数次的字符
-        odds = sum(v &amp; 1 for v in Counter(s).values())
-        # 先把奇数次的字符去掉，然后从中找一个(如果有)
-        return len(s) - odds + bool(odds)
+    def longestPalindromeSubseq(self, s: str) :
+        if len(s) &lt; 2 or s == s[:: -1]:
+            return len(s)
+
+        dp = [[0] * len(s) for _ in range(len(s))]
+        for j in range(len(s)):  # col
+            # 逐列填充矩阵
+            dp[j][j] = 1
+            for i in reversed(range(j)):  # row
+                # 从对角线开始往上填充
+                if s[i] == s[j]:
+                    dp[i][j] = dp[i + 1][j - 1] + 2
+                else:
+                    dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])
+        # 最后矩阵的右上角就是所求的长度
+        return dp[0][-1], self.findPalindrome(dp, s)
+
+    def findPalindrome(self, dp, s):
+        &quot;&quot;&quot;
+        要从已经计算好的状态矩阵中找出所有的最长公共子序列，我们需要关注的是当出现向上和向左都可以
+        的时候，需要保持方向的一致，向上就一直向上，向左就一直向左，否则会出现问题。
+        &quot;&quot;&quot;
+        rows, cols = len(dp), len(dp[0])
+        i, j = 0, cols - 1
+        ans = ''
+        while i &lt; rows and j &gt;= 0:
+            # 因为我们是反向查找的，所以加到前面去
+            if dp[i][j] == 0 or dp[i][j] &gt; dp[i + 1][j]:
+                ans = s[i] + ans
+                i += 1
+                j -= 1
+            else:
+                i += 1
+        return ans
+
+
+def main():
+    solution = Solution()
+    s = 'axbdba'
+    length, palindrome = solution.longestPalindromeSubseq(s)
+    print(length)
+    print(palindrome)
+
+
+if __name__ == '__main__':
+    main()
 
 </code></pre>
 
@@ -216,6 +252,30 @@ class Solution:
 <ul class="widget-list">
     
     <li>
+        <a href="https://sysujayce.github.io/posts/continuedfraction/" title="比较两个连分数的大小">比较两个连分数的大小</a>
+    </li>
+    
+    <li>
+        <a href="https://sysujayce.github.io/posts/josephus/" title="约瑟夫环">约瑟夫环</a>
+    </li>
+    
+    <li>
+        <a href="https://sysujayce.github.io/posts/longestcommonsubstring/" title="最长公共子串">最长公共子串</a>
+    </li>
+    
+    <li>
+        <a href="https://sysujayce.github.io/posts/longestcommonsubsequence/" title="leetcode 1143. 最长公共子序列">leetcode 1143. 最长公共子序列</a>
+    </li>
+    
+    <li>
+        <a href="https://sysujayce.github.io/posts/longestpalindromeofsubstring/" title="leetcode 5：最长回文子串">leetcode 5：最长回文子串</a>
+    </li>
+    
+    <li>
+        <a href="https://sysujayce.github.io/posts/longestpalindrome/" title="leetcode 409. 最长回文字符串">leetcode 409. 最长回文字符串</a>
+    </li>
+    
+    <li>
         <a href="https://sysujayce.github.io/posts/intelligentinterview/" title="求职复习">求职复习</a>
     </li>
     
@@ -224,7 +284,7 @@ class Solution:
     </li>
     
     <li>
-        <a href="https://sysujayce.github.io/posts/longestpalindromicsubsequence/" title="leetcode 409：给定字符串，求能重组成的最长回文字符串">leetcode 409：给定字符串，求能重组成的最长回文字符串</a>
+        <a href="https://sysujayce.github.io/posts/longestpalindromicsubsequence/" title="leetcode 516. 最长回文子序列">leetcode 516. 最长回文子序列</a>
     </li>
     
 </ul>
@@ -237,7 +297,7 @@ class Solution:
 <ul class="widget-list">
     
     <li>
-        <a href="https://sysujayce.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/">数据结构算法(2)</a>
+        <a href="https://sysujayce.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/">数据结构算法(8)</a>
     </li>
     
     <li>
@@ -258,6 +318,8 @@ class Solution:
     <a href="https://sysujayce.github.io/tags/%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/">回文字符串</a>
     
     <a href="https://sysujayce.github.io/tags/%E6%99%BA%E5%8A%9B%E9%A2%98/">智力题</a>
+    
+    <a href="https://sysujayce.github.io/tags/%E9%80%92%E5%BD%92/">递归</a>
     
 </div>
     </section>

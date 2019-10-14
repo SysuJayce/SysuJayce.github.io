@@ -7,20 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>求职复习 | Jayce Wong&#39;s Blog</title>
-    <meta property="og:title" content="求职复习 - Jayce Wong&#39;s Blog">
+    <title>最长公共子串 | Jayce Wong&#39;s Blog</title>
+    <meta property="og:title" content="最长公共子串 - Jayce Wong&#39;s Blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content="2019-10-14T21:04:03&#43;08:00">
+    <meta property="article:published_time" content="2019-10-14T21:43:54&#43;08:00">
         
         
-    <meta property="article:modified_time" content="2019-10-14T21:04:03&#43;08:00">
+    <meta property="article:modified_time" content="2019-10-14T21:43:54&#43;08:00">
         
     <meta name="Keywords" content="Linux, Python, Machine Learning, Deep Learning, Data Mining">
-    <meta name="description" content="求职复习">
+    <meta name="description" content="最长公共子串">
         
     <meta name="author" content="Jayce">
-    <meta property="og:url" content="https://sysujayce.github.io/posts/intelligentinterview/">
+    <meta property="og:url" content="https://sysujayce.github.io/posts/longestcommonsubstring/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
@@ -74,7 +74,7 @@
                 <div class="res-cons">
                     <article class="post">
                         <header>
-                            <h1 class="post-title">求职复习</h1>
+                            <h1 class="post-title">最长公共子串</h1>
                         </header>
                         <date class="post-meta meta-date">
                             2019年10月14日
@@ -83,7 +83,7 @@
                         <div class="post-meta">
                             <span>|</span>
                             
-                                <span class="meta-category"><a href="https://sysujayce.github.io/categories/%E9%9D%A2%E7%BB%8F">面经</a></span>
+                                <span class="meta-category"><a href="https://sysujayce.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95">数据结构算法</a></span>
                             
                         </div>
                         
@@ -96,107 +96,71 @@
                         <div class="post-content">
                             
 
-<h2 id="智力题">智力题</h2>
+<h2 id="题目描述">题目描述：</h2>
 
-<ol>
-<li><p>烧绳子：有若材质一样的干根不均匀绳子，烧完一根需要1h，如何计时得到75min, 15min, 30min?</p>
+<p>给定两个字符串s1和s2，计算其最长公共子串的长度，并返回所有可能的最长公共子串。</p>
 
-<blockquote>
-<p>既然不均匀，那就代表不能通过长度来直接得到30min，15min</p>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+# @Time         : 2019-09-22 22:57
+# @Author       : Jayce Wong
+# @ProjectName  : job
+# @FileName     : longestCommonSubstring.py
+# @Blog         : https://sysujayce.github.io/
+# @Github       : https://github.com/SysuJayce
 
-<p>30min：一根绳子从头烧到尾需要1h，那从两边往中间烧的话只需要30min；</p>
 
-<p>15min：将绳子1的两头点燃，同时点燃绳子2的左端，当绳子1燃尽的时候过了30min，此时点燃绳子2的右端，并开始计时，当绳子2燃尽的时候就得到了15min；</p>
+def lcs(s1, s2):
+    &quot;&quot;&quot;
+    现在我们知道了，如果遇到输入是两个字符串的，需要用到的动态规划的话，那么我们需要的状态是一个
+    二维的矩阵。
+    首先我们需要定义这个矩阵中每个元素的意义：
+    dp[i][j]代表了s1[: i + 1]和s2[: j + 1]以s1[i]和s2[j]结尾的公共子串的长度。
+    那么关键就在于如何确定转换方程和如何初始化这个状态矩阵了。
 
-<p>75min_1：可以在得到15min之后马上点燃另一根绳子，等该绳子燃尽就可以得到75min；</p>
+    显然，由于dp[i][j]计算的是同时以s1[i]和s2[j]为结尾公共子串的长度，
+    如果s1[i] != s2[j]，那么dp[i][j] = 0
+    当s1[i] == s2[j]时，dp[i][j] = dp[i - 1][j - 1] + 1
+    :param s1: 输入的第一个字符串
+    :param s2: 输入的第二个字符串
+    :return: 最大公共子串长度、以及最大公共子串的具体值
+    &quot;&quot;&quot;
+    # 为了方便编程，先在s1和s2前面加入一个空格占位
+    s1 = ' ' + s1
+    s2 = ' ' + s2
+    rows = len(s1)
+    cols = len(s2)
+    dp = [[0] * cols for _ in range(rows)]
+    maxlen = 0
+    for i in range(1, rows):
+        for j in range(1, cols):
+            if s1[i] == s2[j]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+                maxlen = max(maxlen, dp[i][j])
+            else:
+                dp[i][j] = 0
 
-<p>75min_2：将绳子1的两头点燃，同时点燃绳子2的左端并计时，当绳子1燃尽的时候过了30min，此时点燃绳子2的右端，当绳子2燃尽的时候就得到了45min；然后再点燃绳子3的两端，当绳子3燃尽的时候就得到了75min；</p>
-</blockquote></li>
+    res = []
+    for i in range(1, rows):
+        for j in range(1, cols):
+            # s1[i]为结尾的子串，截取长度为maxlen即可
+            if dp[i][j] == maxlen:
+                res.append(s1[i - maxlen + 1: i + 1])
 
-<li><p>老鼠喝毒酒：有1000桶酒,其中1桶有毒.而一旦吃了,毒性会在1周后发作.现在我们用小老鼠做实验,要在1周内找出那桶毒酒,问最少需要多少老鼠?</p>
+    return maxlen, res
 
-<blockquote>
-<p>首先利用<strong>二进制</strong>将每桶酒进行编号，1000桶酒就需要2^10才能表示，因此需要10位。</p>
 
-<p>在确定了如何对每桶酒进行编号之后，我们现在就需要确定毒酒的二进制表示中的每一位是什么。</p>
+def main():
+    s1 = 'ABCBDEFBWD'
+    s2 = 'BCBWD'
+    maxlen, res = lcs(s1, s2)
+    print(maxlen)
+    print(res)
 
-<p>如果我们将1000桶酒按照二进制中第k位是否为1进行划分，然后让老鼠k去喝第k位为1的所有酒，如果老鼠k死去，证明毒酒的第k位为1，否则第k位为0.</p>
 
-<p>由于我们一共用了10位来表示毒酒，因此需要10只老鼠即可判断哪一桶是毒酒。</p>
-</blockquote></li>
+if __name__ == '__main__':
+    main()
 
-<li><p>猜纸牌：有9张纸牌，分别为1至9。A、B、C、D四人取牌，每人取2张。现已知A取的两张牌之和是10;B取的两张牌之差是1;C取的两张牌之积是24;D取的荫张牌之商是3。请说出他们四人各拿了哪两张纸牌;剩下的一张又是什么牌?</p>
-
-<blockquote>
-<p>其实就是有8个变量，其中两两满足一个约束，总体又满足一个约束，如何确定各个变量的值。</p>
-
-<p>那我们就先把各个约束写出来。其中满足C和D的约束的组合是最少的，那么我们就从这两个人身上下手。</p>
-
-<p>从满足约束的组合数最少的人开始，遍历其所有可能的取值，然后根据其他约束去判断就可以了。</p>
-</blockquote></li>
-
-<li><p>数楼层问题：有n层楼，现在你想知道在哪一层楼之下，鸡蛋不会被摔碎，如何分别用1个鸡蛋和2个鸡蛋去判断具体是哪一层楼？</p>
-
-<blockquote>
-<p>如果只有1个鸡蛋，那我们只能遍历这n层楼，因此复杂度是O(1)</p>
-
-<p>如果有2个鸡蛋，那么我们需要做的就是两次循环，假设第一次循环的步长为x，那么需要循环n / x次，即第一次从第x层往下扔，第二次从第2x层往下扔， &hellip;，最后从第n层往下扔。假设在第kx层往下扔的时候鸡蛋碎了，那么就从第kx层开始向下遍历，最多遍历x次就可以找到答案。</p>
-
-<p>那么现在就需要求这个x是多少，总共需要的循环次数是 f(x) = n / x ^ 2 + x， f&rsquo;(x) = 1 - n / x ^ 2，令f&rsquo;(x) = 0，得到x = sqrt(n)。也就是先按照根号n的步长遍历，然后再逐层遍历即可。</p>
-</blockquote></li>
-
-<li><p>一共有25匹马，有一个赛场，赛场有5个赛道，就是说最多同时可以有5匹马一起比赛。假设每匹马都跑的很稳定，不用任何其他工具，只通过马与马之间的比赛，试问最少得比多少场才能知道跑得最快的5匹马。</p>
-
-<blockquote>
-<p>首先分析一下，如果用多路归并，那么我们需要5+x次比赛才能确定最快的x匹马，那如果我们要将这个次数减小，就必须在某一次比赛中同时决出2个名次。</p>
-
-<p>先将25匹马随机划分为5组【A, B, C, D, E】，然后先跑5轮【这里是前5轮】比赛，得到每组的内部顺序。</p>
-
-<p>然后将这5组里面的第一名【A1, B1, C1, D1, E1】拉出来跑1轮【这里是第6轮】，得到这几匹马的先后顺序。假设这里A1 &gt; B1 &gt; C1 &gt; D1 &gt; E1</p>
-
-<p>由于我们要找的是所有马中跑的最快的5匹，因此第6轮比赛中跑倒数第一的那匹马所在的组的后4匹马都不能是前5了，而倒数第二的那匹马所在组的后3匹马不能是前5了，其他组同理，因此第6轮比赛之后我们就可以筛掉4+3+2+1+0 = 10匹马，那么现在场内剩下的马还有15匹。也就是说，我们在第6轮比赛中决出了真正的第一名。</p>
-
-<blockquote>
-<p>A组： [<u><em>A1</em></u> A2 A3 A4 A5]</p>
-
-<p>B组： [B1 B2 B3 B4 <strong>B5</strong>]</p>
-
-<p>C组： [C1 C2 C3 <strong>C4 C5</strong>]</p>
-
-<p>D组： [D1 D2 <strong>D3 D4 D5</strong>]</p>
-
-<p>E组： [E1 <strong>E2 E3 E4 E5</strong>]</p>
-
-<p>其中加粗的代表已经被淘汰</p>
-</blockquote>
-
-<p>现在我们需要从剩下的15匹马中找出第二名。既然A1是第一名，那么第二名就只能从A2和B1中产生，只需要2条跑道就可以了，那剩余的3条跑到能否决出第三名呢？</p>
-
-<blockquote>
-<p>假设B1是第二名，那么第三名就出现在A2、B2、C1中</p>
-
-<p>假设A2是第二名，那么第三名就出现在A3、B1、C1中</p>
-
-<p>那么就是说如果我们在<strong>第7轮</strong>比赛中让A2、A3、B1、B2、C1进行比赛，就可以同时决出第二名和第三名</p>
-</blockquote>
-
-<p>剩下的分析也是跟刚刚的思路一样。</p>
-
-<p>总结：<strong>25匹马，5个跑道，至少需要9场比赛才能保证找出前5名</strong></p>
-
-<p><strong>64匹马，8个跑道，至少需要11场才能保证找出前4名</strong></p>
-</blockquote></li>
-</ol>
-
-<h2 id="编程题-注意代码可读性-变量命名">编程题 (注意代码可读性、变量命名)</h2>
-
-<ol>
-<li><p>最大子数组(滑动窗口)</p></li>
-
-<li><p>环状子数组的最大和(动态规划)</p></li>
-
-<li><p>Top K问题(归并)</p></li>
-</ol>
+</code></pre>
 
                         </div>
 
@@ -204,7 +168,7 @@
 <div class="post-archive">
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://sysujayce.github.io/">Jayce</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://sysujayce.github.io/posts/intelligentinterview/">https://sysujayce.github.io/posts/intelligentinterview/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://sysujayce.github.io/posts/longestcommonsubstring/">https://sysujayce.github.io/posts/longestcommonsubstring/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -218,13 +182,15 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/posts/shortesteditdistance/">leetcode 72: 最小编辑距离</a></li>
+        <li><a href="/posts/longestcommonsubsequence/">leetcode 1143. 最长公共子序列</a></li>
         
-        <li><a href="/about/">关于我</a></li>
+        <li><a href="/posts/shortesteditdistance/">leetcode 72: 最小编辑距离</a></li>
         
         <li><a href="/posts/longestpalindromicsubsequence/">leetcode 516. 最长回文子序列</a></li>
         
-        <li><a href="/archives/">归档</a></li>
+        <li><a href="/posts/longestpalindromeofsubstring/">leetcode 5：最长回文子串</a></li>
+        
+        <li><a href="/posts/longestpalindrome/">leetcode 409. 最长回文字符串</a></li>
         
     </ul>
 </div>
@@ -234,7 +200,7 @@
                             
                             <ul class="clearfix">
                                 
-                                <li><a href="https://sysujayce.github.io/tags/%E6%99%BA%E5%8A%9B%E9%A2%98">智力题</a></li>
+                                <li><a href="https://sysujayce.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">动态规划</a></li>
                                 
                             </ul>
                             

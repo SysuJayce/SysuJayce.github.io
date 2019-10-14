@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>递归 on Jayce Wong&#39;s Blog</title>
+    <link>https://sysujayce.github.io/tags/%E9%80%92%E5%BD%92/</link>
+    <description>Recent content in 递归 on Jayce Wong&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 14 Oct 2019 21:47:08 +0800</lastBuildDate>
+    
+	<atom:link href="https://sysujayce.github.io/tags/%E9%80%92%E5%BD%92/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>比较两个连分数的大小</title>
+      <link>https://sysujayce.github.io/posts/continuedfraction/</link>
+      <pubDate>Mon, 14 Oct 2019 21:47:08 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/continuedfraction/</guid>
+      <description>题目描述 连分数可以表示为(a0; a1, a2, ... , an),
+输入 输入n，之后是n+1个数字，分别表示a~0~, a~1~, &amp;hellip;, a~n~
+输入m，之后是m+1个数字，分别表示b~0~, b~1~, &amp;hellip;, b~m~
+要求比较以上两个连分数（分别记为x和y）的大小。
+输出 若`x &amp;gt; y，输出 &amp;gt;，若 x &amp;lt; y，输出 &amp;lt;，否则输出 =</description>
+    </item>
+    
+  </channel>
+</rss>

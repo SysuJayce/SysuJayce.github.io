@@ -6,18 +6,42 @@
     <description>Recent content in 回文字符串 on Jayce Wong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 11 Oct 2019 22:45:57 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2019 21:19:16 +0800</lastBuildDate>
     
 	<atom:link href="https://sysujayce.github.io/tags/%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>leetcode 409：给定字符串，求能重组成的最长回文字符串</title>
+      <title>leetcode 5：最长回文子串</title>
+      <link>https://sysujayce.github.io/posts/longestpalindromeofsubstring/</link>
+      <pubDate>Mon, 14 Oct 2019 21:19:16 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/longestpalindromeofsubstring/</guid>
+      <description>题目描述 给定一个字符串，找出其中最长的回文子串
+Example 1: Input: &amp;quot;babad&amp;quot; Output: &amp;quot;bab&amp;quot; Note: &amp;quot;aba&amp;quot; is also a valid answer. Example 2: Input: &amp;quot;cbbd&amp;quot; Output: &amp;quot;bb&amp;quot;  # -*- coding: utf-8 -*- # @Time : 2019-10-11 10:34 # @Author : Jayce Wong # @ProjectName : job # @FileName : longestPalindromicSubstring.</description>
+    </item>
+    
+    <item>
+      <title>leetcode 409. 最长回文字符串</title>
+      <link>https://sysujayce.github.io/posts/longestpalindrome/</link>
+      <pubDate>Mon, 14 Oct 2019 21:10:56 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/longestpalindrome/</guid>
+      <description>题目描述 给定一个字符串，问其中的字符最多能组成多长的回文字符串？
+Example: Input: &amp;quot;abccccdd&amp;quot; Output: 7 解释： 其中一个最长回文字符串是 &amp;quot;dccaccd&amp;quot;, 其长度为 7.  ​``` # -*- coding: utf-8 -*- # @Time : 2019-10-11 10:56 # @Author : Jayce Wong # @ProjectName : job # @FileName : longestPalindrome.</description>
+    </item>
+    
+    <item>
+      <title>leetcode 516. 最长回文子序列</title>
       <link>https://sysujayce.github.io/posts/longestpalindromicsubsequence/</link>
       <pubDate>Fri, 11 Oct 2019 22:45:57 +0800</pubDate>
       
       <guid>https://sysujayce.github.io/posts/longestpalindromicsubsequence/</guid>
-      <description># -*- coding: utf-8 -*- # @Time : 2019-10-11 10:56 # @Author : Jayce Wong # @ProjectName : job # @FileName : longestPalindrome.</description>
+      <description>题目描述 给定一个字符串s，找到其中最长的回文子序列
+示例 1: 输入:
+&amp;quot;bbbab&amp;quot;  输出:
+4  一个可能的最长回文子序列为 &amp;ldquo;bbbb&amp;rdquo;。
+# -*- coding: utf-8 -*- # @Time : 2019-10-11 11:58 # @Author : Jayce Wong # @ProjectName : job # @FileName : longestPalindromicSubsequence.</description>
     </item>
     
   </channel>

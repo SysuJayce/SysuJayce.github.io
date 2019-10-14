@@ -6,10 +6,76 @@
     <description>Recent content in Posts on Jayce Wong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 14 Oct 2019 21:04:03 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2019 21:47:08 +0800</lastBuildDate>
     
 	<atom:link href="https://sysujayce.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>比较两个连分数的大小</title>
+      <link>https://sysujayce.github.io/posts/continuedfraction/</link>
+      <pubDate>Mon, 14 Oct 2019 21:47:08 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/continuedfraction/</guid>
+      <description>题目描述 连分数可以表示为(a0; a1, a2, ... , an),
+输入 输入n，之后是n+1个数字，分别表示a~0~, a~1~, &amp;hellip;, a~n~
+输入m，之后是m+1个数字，分别表示b~0~, b~1~, &amp;hellip;, b~m~
+要求比较以上两个连分数（分别记为x和y）的大小。
+输出 若`x &amp;gt; y，输出 &amp;gt;，若 x &amp;lt; y，输出 &amp;lt;，否则输出 =</description>
+    </item>
+    
+    <item>
+      <title>约瑟夫环</title>
+      <link>https://sysujayce.github.io/posts/josephus/</link>
+      <pubDate>Mon, 14 Oct 2019 21:45:37 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/josephus/</guid>
+      <description>题目描述 约瑟夫斯（Josephus）问题是一个出现在计算机科学和数学中的问题。 在计算机编程的算法中，类似问题又称为约瑟夫环。 约瑟夫斯问题：有n个囚犯站成一个圆圈，准备处决。 首先从一个人开始，越过k-2个人（因为第一个人已经被越过），并杀掉第k个人。 接着，再越过k-1个人，并杀掉第k个人。 这个过程沿着圆圈一直进行，直到最终只剩下一个人留下，这个人就可以继续活着。
+给定了n和k，一开始要站在什么地方才能避免被处决？
+# -*- coding: utf-8 -*- # @Time : 2019-09-18 21:57 # @Author : Jayce Wong # @ProjectName : job # @FileName : josephus.</description>
+    </item>
+    
+    <item>
+      <title>最长公共子串</title>
+      <link>https://sysujayce.github.io/posts/longestcommonsubstring/</link>
+      <pubDate>Mon, 14 Oct 2019 21:43:54 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/longestcommonsubstring/</guid>
+      <description>题目描述： 给定两个字符串s1和s2，计算其最长公共子串的长度，并返回所有可能的最长公共子串。
+# -*- coding: utf-8 -*- # @Time : 2019-09-22 22:57 # @Author : Jayce Wong # @ProjectName : job # @FileName : longestCommonSubstring.</description>
+    </item>
+    
+    <item>
+      <title>leetcode 1143. 最长公共子序列</title>
+      <link>https://sysujayce.github.io/posts/longestcommonsubsequence/</link>
+      <pubDate>Mon, 14 Oct 2019 21:40:51 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/longestcommonsubsequence/</guid>
+      <description>题目描述 给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列。
+一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。 例如，&amp;rdquo;ace&amp;rdquo; 是 &amp;ldquo;abcde&amp;rdquo; 的子序列，但 &amp;ldquo;aec&amp;rdquo; 不是 &amp;ldquo;abcde&amp;rdquo; 的子序列。两个字符串的「公共子序列」是这两个字符串所共同拥有的子序列。
+若这两个字符串没有公共子序列，则返回 0。
+示例 1:</description>
+    </item>
+    
+    <item>
+      <title>leetcode 5：最长回文子串</title>
+      <link>https://sysujayce.github.io/posts/longestpalindromeofsubstring/</link>
+      <pubDate>Mon, 14 Oct 2019 21:19:16 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/longestpalindromeofsubstring/</guid>
+      <description>题目描述 给定一个字符串，找出其中最长的回文子串
+Example 1: Input: &amp;quot;babad&amp;quot; Output: &amp;quot;bab&amp;quot; Note: &amp;quot;aba&amp;quot; is also a valid answer. Example 2: Input: &amp;quot;cbbd&amp;quot; Output: &amp;quot;bb&amp;quot;  # -*- coding: utf-8 -*- # @Time : 2019-10-11 10:34 # @Author : Jayce Wong # @ProjectName : job # @FileName : longestPalindromicSubstring.</description>
+    </item>
+    
+    <item>
+      <title>leetcode 409. 最长回文字符串</title>
+      <link>https://sysujayce.github.io/posts/longestpalindrome/</link>
+      <pubDate>Mon, 14 Oct 2019 21:10:56 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/longestpalindrome/</guid>
+      <description>题目描述 给定一个字符串，问其中的字符最多能组成多长的回文字符串？
+Example: Input: &amp;quot;abccccdd&amp;quot; Output: 7 解释： 其中一个最长回文字符串是 &amp;quot;dccaccd&amp;quot;, 其长度为 7.  ​``` # -*- coding: utf-8 -*- # @Time : 2019-10-11 10:56 # @Author : Jayce Wong # @ProjectName : job # @FileName : longestPalindrome.</description>
+    </item>
     
     <item>
       <title>求职复习</title>
@@ -45,12 +111,16 @@
     </item>
     
     <item>
-      <title>leetcode 409：给定字符串，求能重组成的最长回文字符串</title>
+      <title>leetcode 516. 最长回文子序列</title>
       <link>https://sysujayce.github.io/posts/longestpalindromicsubsequence/</link>
       <pubDate>Fri, 11 Oct 2019 22:45:57 +0800</pubDate>
       
       <guid>https://sysujayce.github.io/posts/longestpalindromicsubsequence/</guid>
-      <description># -*- coding: utf-8 -*- # @Time : 2019-10-11 10:56 # @Author : Jayce Wong # @ProjectName : job # @FileName : longestPalindrome.</description>
+      <description>题目描述 给定一个字符串s，找到其中最长的回文子序列
+示例 1: 输入:
+&amp;quot;bbbab&amp;quot;  输出:
+4  一个可能的最长回文子序列为 &amp;ldquo;bbbb&amp;rdquo;。
+# -*- coding: utf-8 -*- # @Time : 2019-10-11 11:58 # @Author : Jayce Wong # @ProjectName : job # @FileName : longestPalindromicSubsequence.</description>
     </item>
     
   </channel>

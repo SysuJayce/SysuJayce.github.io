@@ -7,22 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>面经 | Jayce Wong&#39;s Blog</title>
-    <meta property="og:title" content="面经 - Jayce Wong&#39;s Blog">
+    <title>递归 | Jayce Wong&#39;s Blog</title>
+    <meta property="og:title" content="递归 - Jayce Wong&#39;s Blog">
     <meta property="og:type" content="article">
         
         
     <meta name="Keywords" content="Linux, Python, Machine Learning, Deep Learning, Data Mining">
-    <meta name="description" content="面经">
+    <meta name="description" content="递归">
         
     <meta name="author" content="Jayce">
-    <meta property="og:url" content="https://sysujayce.github.io/categories/%E9%9D%A2%E7%BB%8F/">
+    <meta property="og:url" content="https://sysujayce.github.io/tags/%E9%80%92%E5%BD%92/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
     
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="alternate" type="application/rss+xml+xml" href="https://sysujayce.github.io/categories/%E9%9D%A2%E7%BB%8F/index.xml" title="Jayce Wong's Blog" />
+    <link rel="alternate" type="application/rss+xml+xml" href="https://sysujayce.github.io/tags/%E9%80%92%E5%BD%92/index.xml" title="Jayce Wong's Blog" />
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -68,9 +68,9 @@
                 <div class="res-cons">
                     
                     <h3 class="archive-title">
-                        分类
-                        <span class="keyword">面经</span>
-                        中的文章
+                        包含标签
+                        <span class="keyword">递归</span>
+                        的文章
                     </h3>
                     
 
@@ -78,7 +78,7 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="https://sysujayce.github.io/posts/intelligentinterview/">求职复习</a>
+                                    <a href="https://sysujayce.github.io/posts/continuedfraction/">比较两个连分数的大小</a>
                                 </h1>
                             </header>
                             <date class="post-meta meta-date">
@@ -88,24 +88,17 @@
                             <div class="post-meta meta-category">
                                 |
                                 
-                                    <a href="https://sysujayce.github.io/categories/%E9%9D%A2%E7%BB%8F">面经</a>
+                                    <a href="https://sysujayce.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95">数据结构算法</a>
                                 
                             </div>
                             
                             <div class="post-content">
-                                智力题  烧绳子：有若材质一样的干根不均匀绳子，烧完一根需要1h，如何计时得到75min, 15min, 30min?
- 既然不均匀，那就代表不能通过长度来直接得到30min，15min
-30min：一根绳子从头烧到尾需要1h，那从两边往中间烧的话只需要30min；
-15min：将绳子1的两头点燃，同时点燃绳子2的左端，当绳子1燃尽的时候过了30min，此时点燃绳子2的右端，并开始计时，当绳子2燃尽的时候就得到了15min；
-75min_1：可以在得到15min之后马上点燃另一根绳子，等该绳子燃尽就可以得到75min；
-75min_2：将绳子1的两头点燃，同时点燃绳子2的左端并计时，当绳子1燃尽的时候过了30min，此时点燃绳子2的右端，当绳子2燃尽的时候就得到了45min；然后再点燃绳子3的两端，当绳子3燃尽的时候就得到了75min；
- 老鼠喝毒酒：有1000桶酒,其中1桶有毒.而一旦吃了,毒性会在1周后发作.现在我们用小老鼠做实验,要在1周内找出那桶毒酒,问最少需要多少老鼠?
- 首先利用二进制将每桶酒进行编号，1000桶酒就需要2^10才能表示，因此需要10位。
-在确定了如何对每桶酒进行编号之后，我们现在就需要确定毒酒的二进制表示中的每一位是什么。
-如果我们将1000桶酒按照二进制中第k位是否为1进行划分，然后让老鼠k去喝第k位为1的所有酒，如果老鼠k死去，证明毒酒的第k位为1，否则第k位为0.
-由于我们一共用了10位来表示毒酒，因此需要10只老鼠即可判断哪一桶是毒酒。
- 猜纸牌：有9张纸牌，分别为1至9。A、B、C、D四人取牌，每人取2张。现已知A取的两张牌之和是10;B取的两张牌之差是1;C取的两张牌之积是24;D取的荫张牌之商是3。请说出他们四人各拿了哪两张纸牌;剩下的一张又是什么牌?……
-                                <p class="readmore"><a href="https://sysujayce.github.io/posts/intelligentinterview/">阅读全文</a></p>
+                                题目描述 连分数可以表示为(a0; a1, a2, ... , an),
+输入 输入n，之后是n+1个数字，分别表示a~0~, a~1~, &hellip;, a~n~
+输入m，之后是m+1个数字，分别表示b~0~, b~1~, &hellip;, b~m~
+要求比较以上两个连分数（分别记为x和y）的大小。
+输出 若`x &gt; y，输出 &gt;，若 x &lt; y，输出 &lt;，否则输出 =……
+                                <p class="readmore"><a href="https://sysujayce.github.io/posts/continuedfraction/">阅读全文</a></p>
                             </div>
                         </article>
                     

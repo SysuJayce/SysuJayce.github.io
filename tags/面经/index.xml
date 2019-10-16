@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>面经 on Jayce Wong&#39;s Blog</title>
+    <link>https://sysujayce.github.io/tags/%E9%9D%A2%E7%BB%8F/</link>
+    <description>Recent content in 面经 on Jayce Wong&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 16 Oct 2019 22:09:09 +0800</lastBuildDate>
+    
+	<atom:link href="https://sysujayce.github.io/tags/%E9%9D%A2%E7%BB%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>美团2020校招笔试：字符串排序</title>
+      <link>https://sysujayce.github.io/posts/meituan_stringsort/</link>
+      <pubDate>Wed, 16 Oct 2019 22:09:09 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/meituan_stringsort/</guid>
+      <description>题目描述 给定字符串，对其进行逆序排序。
+ 字符逆序是指从z到a排序，比如对两个字符串排序时，先比较第一个字符，按照字符逆序将z排在a的前面，当第一个字符相等时按照第二个字符进行排序，以此类推。
+特殊情况：
+  空字符串需要排在最前面； 若一个短字符串是另一个长字符串的前缀则短字符串排在前面    请自行实现代码进行排序，不可直接调用sort等排序方法。
+样例 输入
+waimai,dache,lvyou,liren,meishi,jiehun,lvyoujingdian,jiaopei,menpiao,jiudian
+输出
+waimai,menpiao,meishi,lvyou,lvyoujingdian,liren,jiudian,jiehun,jiaopei,dache
+# -*- coding: utf-8 -*- # @Time : 2019-10-16 16:15 # @Author : Jayce Wong # @ProjectName : job # @FileName : meituan.</description>
+    </item>
+    
+  </channel>
+</rss>

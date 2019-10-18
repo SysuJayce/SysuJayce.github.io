@@ -6,10 +6,32 @@
     <description>Recent content in 剑指offer on Jayce Wong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 16 Oct 2019 14:43:45 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 18 Oct 2019 09:22:17 +0800</lastBuildDate>
     
 	<atom:link href="https://sysujayce.github.io/tags/%E5%89%91%E6%8C%87offer/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>剑指offer：不用加减乘除做加法</title>
+      <link>https://sysujayce.github.io/posts/addwithoutelementaryarithmetic/</link>
+      <pubDate>Fri, 18 Oct 2019 09:22:17 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/addwithoutelementaryarithmetic/</guid>
+      <description>题目描述 写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。
+# -*- coding: utf-8 -*- # @Time : 2019-10-17 20:50 # @Author : Jayce Wong # @ProjectName : job # @FileName : addWithoutElementaryArithmetic.</description>
+    </item>
+    
+    <item>
+      <title>剑指offer：不使用乘除、判断、循环进行求和</title>
+      <link>https://sysujayce.github.io/posts/novelsumsolution/</link>
+      <pubDate>Thu, 17 Oct 2019 11:19:11 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/novelsumsolution/</guid>
+      <description>题目描述 求1+2+3+&amp;hellip;+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。
+解题思路 解法1：递归 + 逻辑运算 关键在于利用逻辑与的短路规则来设置递归的出口。
+这里给出我写的Python实现以及参考的C++实现
+# -*- coding: utf-8 -*- # @Time : 2019-10-17 10:56 # @Author : Jayce Wong # @ProjectName : job # @FileName : sumSolution.</description>
+    </item>
     
     <item>
       <title>剑指offer：和为S的连续正数序列</title>

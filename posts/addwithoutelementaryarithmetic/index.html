@@ -7,20 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>leetcode 516. 最长回文子序列 | Jayce Wong&#39;s Blog</title>
-    <meta property="og:title" content="leetcode 516. 最长回文子序列 - Jayce Wong&#39;s Blog">
+    <title>剑指offer：不用加减乘除做加法 | Jayce Wong&#39;s Blog</title>
+    <meta property="og:title" content="剑指offer：不用加减乘除做加法 - Jayce Wong&#39;s Blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content="2019-10-11T22:45:57&#43;08:00">
+    <meta property="article:published_time" content="2019-10-18T09:22:17&#43;08:00">
         
         
-    <meta property="article:modified_time" content="2019-10-11T22:45:57&#43;08:00">
+    <meta property="article:modified_time" content="2019-10-18T09:22:17&#43;08:00">
         
     <meta name="Keywords" content="Linux, Python, Machine Learning, Deep Learning, Data Mining">
-    <meta name="description" content="leetcode 516. 最长回文子序列">
+    <meta name="description" content="剑指offer：不用加减乘除做加法">
         
     <meta name="author" content="Jayce">
-    <meta property="og:url" content="https://sysujayce.github.io/posts/longestpalindromicsubsequence/">
+    <meta property="og:url" content="https://sysujayce.github.io/posts/addwithoutelementaryarithmetic/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
@@ -74,10 +74,10 @@
                 <div class="res-cons">
                     <article class="post">
                         <header>
-                            <h1 class="post-title">leetcode 516. 最长回文子序列</h1>
+                            <h1 class="post-title">剑指offer：不用加减乘除做加法</h1>
                         </header>
                         <date class="post-meta meta-date">
-                            2019年10月11日
+                            2019年10月18日
                         </date>
                         
                         <div class="post-meta">
@@ -98,81 +98,92 @@
 
 <h2 id="题目描述">题目描述</h2>
 
-<p>给定一个字符串<code>s</code>，找到其中最长的回文子序列</p>
-
-<p><strong>示例 1:</strong>
-输入:</p>
-
-<pre><code>&quot;bbbab&quot;
-</code></pre>
-
-<p>输出:</p>
-
-<pre><code>4
-</code></pre>
-
-<p>一个可能的最长回文子序列为 &ldquo;bbbb&rdquo;。</p>
+<p>写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。</p>
 
 <pre><code class="language-python"># -*- coding: utf-8 -*-
-# @Time         : 2019-10-11 11:58
+# @Time         : 2019-10-17 20:50
 # @Author       : Jayce Wong
 # @ProjectName  : job
-# @FileName     : longestPalindromicSubsequence.py
+# @FileName     : addWithoutElementaryArithmetic.py
 # @Blog         : https://sysujayce.github.io/
 # @Github       : https://github.com/SysuJayce
 
 
 class Solution:
     &quot;&quot;&quot;
-    dp[i][j]表示s[i: j + 1]的最长回文子序列长度
+    ~n = -(n + 1)
+    其实这种trick，感觉如果之前没有见过是很难想出来的。
+    这种题目，只要是涉及到不允许用四则运算的，大概率都会跟位运算、逻辑运算、递归挂钩。
 
-    若s[i] == s[j]，则dp[i][j] = dp[i + 1][j - 1] + 2 【即将头尾去掉】
-    若s[i] != s[j]，则dp[i][j] = max(dp[i + 1][j], dp[i][j - 1]) 【即分别去头和去尾，求最大】
+    假设需要计算5 + 7 = 12
+    0101
+   +0111
+   =1100
 
-    dp[i][i] = 1，因为s[i: i + 1]总是一个回文字符串，长度为1
+    拆解一下：
+    第1步： 0101 + 0111 = 0010 (不考虑进位相加)
+    第2步：进位出现的位置是两个数在该位置都为1的情况，例如这里就是在第0、2位 (从右往左记录索引)
+          即，进位情况为 0101，但既然涉及到了进位，是需要左移1位的(不然就是没有进位，有进位必然
+          是只左移1位)，因此进位结果为0101 &lt;&lt; 1 --&gt; 1010
+    第3步：将第1步、第2步的结果相加，即 0010 + 1010 = 1100.
+
+    而第3步的结果是可以通过重复第1、2步来得到的，也就是说，
+    我们可以将原本的0101 + 0111 --&gt; 0010 + 1010
+    而后者可以继续利用第1、2步的算法展开，得到：1000 + 0100
+    再展开，得到：1100 + 0000，注意到此时的1100就是我们需要的结果。
+
+    总结上述的计算过程，我们先计算不带进位的和，然后计算进位是多少，重复上述步骤直到进位为0即可。
+    具体来说，计算不带进位的和只需要进行异或运算即可；计算进位只需要计算位与运算后左移1位即可。
     &quot;&quot;&quot;
-    def longestPalindromeSubseq(self, s: str) :
-        if len(s) &lt; 2 or s == s[:: -1]:
-            return len(s)
+    def Add(self, num1, num2):
+        while num2:
+            print(num1, num2)
+            # 不带进位的和的计算：异或。
+            # 注意到由于Python的数字是不限位数的，而我们用的这种算法是针对有限位数的，
+            # 因此需要添加一个界限，这里以32位为界
+            sum_without_carry = (num1 ^ num2) &amp; 0xFFFFFFFF
+            carry = ((num1 &amp; num2) &lt;&lt; 1) &amp; 0xFFFFFFFF
+            num1, num2 = sum_without_carry, carry
 
-        dp = [[0] * len(s) for _ in range(len(s))]
-        for j in range(len(s)):  # col
-            # 逐列填充矩阵
-            dp[j][j] = 1
-            for i in reversed(range(j)):  # row
-                # 从对角线开始往上填充
-                if s[i] == s[j]:
-                    dp[i][j] = dp[i + 1][j - 1] + 2
-                else:
-                    dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])
-        # 最后矩阵的右上角就是所求的长度
-        return dp[0][-1], self.findPalindrome(dp, s)
+        # 如果最后的和是正数或0，直接输出即可
+        # 如果是负数，需要将其正确输出。
+        # 由于我们已经有一个32位的num1，但是python不能识别最高位为符号位，
+        # 因此首先我们可以先按位取反(这里用到的是和全1做异或)，然后对结果取反。
 
-    def findPalindrome(self, dp, s):
-        &quot;&quot;&quot;
-        要从已经计算好的状态矩阵中找出所有的最长公共子序列，我们需要关注的是当出现向上和向左都可以
-        的时候，需要保持方向的一致，向上就一直向上，向左就一直向左，否则会出现问题。
-        &quot;&quot;&quot;
-        rows, cols = len(dp), len(dp[0])
-        i, j = 0, cols - 1
-        ans = ''
-        while i &lt; rows and j &gt;= 0:
-            # 因为我们是反向查找的，所以加到前面去
-            if dp[i][j] == 0 or dp[i][j] &gt; dp[i + 1][j]:
-                ans = s[i] + ans
-                i += 1
-                j -= 1
-            else:
-                i += 1
-        return ans
+        # 注意这里的num1 ^ 0xFFFFFFFF = ~num1 &amp; 0xFFFFFFFF
+        # 区别在于Python中的每一次异或运算都会将位数扩展成无限，因此需要对其重新设定界限
+
+        # 而因为我们获取到的数的位表示都是补码形式，而我们实际需要的是原码形式，
+        # 对于正数来说，正数的原码补码都一样；
+        # 对于负数来说，负数的补码等于原码取反(反码) + 1.
+
+        # 我们这里的异或操作相当于取得了反码，还需要+1，
+        # 并将负号加进去(因为我们在取反的时候将负号为也置为0了)
+        # 而我们这里利用到一个取反的特性： ~n = -(n + 1)。
+        # 因此，我们对按位取反后的结果再进行一次取反就可以
+
+        # 以下三种方法都是可以的
+        # ~(num1 ^ 0xFFFFFFFF)：先异或再取反
+        # -((~(num1 &amp; 0xFFFFFFFF) &amp; 0xFFFFFFFF) + 1)：先取反再+1，最后将负号不上
+        # ~(~(num1 &amp; 0xFFFFFFFF) &amp; 0xFFFFFFFF)：应用了对x取反再取反得到x的原理，只是中间加了位数界限
+
+        return num1 if num1 &lt;= 0x7FFFFFFF else ~(num1 ^ 0xFFFFFFFF)
+        # return num1 if num1 &lt;= 0x7FFFFFFF else ~(~(num1 &amp; 0xFFFFFFFF) &amp; 0xFFFFFFFF)
+        # return num1 if num1 &lt;= 0x7FFFFFFF else -((~(num1 &amp; 0xFFFFFFFF) &amp; 0xFFFFFFFF) + 1)
+
+    def Add2(self, num1, num2):
+        while num2 != 0:
+            print(num1, num2)
+            sum_without_carry = num1 ^ num2
+            carry = (num1 &amp; num2) &lt;&lt; 1
+            num1, num2 = sum_without_carry, carry
+        return num1
 
 
 def main():
     solution = Solution()
-    s = 'axbdba'
-    length, palindrome = solution.longestPalindromeSubseq(s)
-    print(length)
-    print(palindrome)
+    print(solution.Add2(-5, 7))
+    # print(solution.Add(-5, 7))
 
 
 if __name__ == '__main__':
@@ -186,7 +197,7 @@ if __name__ == '__main__':
 <div class="post-archive">
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://sysujayce.github.io/">Jayce</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://sysujayce.github.io/posts/longestpalindromicsubsequence/">https://sysujayce.github.io/posts/longestpalindromicsubsequence/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://sysujayce.github.io/posts/addwithoutelementaryarithmetic/">https://sysujayce.github.io/posts/addwithoutelementaryarithmetic/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -200,7 +211,15 @@ if __name__ == '__main__':
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/archives/">归档</a></li>
+        <li><a href="/posts/numericalsystem/">Python中的数字系统</a></li>
+        
+        <li><a href="/posts/novelsumsolution/">剑指offer：不使用乘除、判断、循环进行求和</a></li>
+        
+        <li><a href="/posts/findcontinuoussequence/">剑指offer：和为S的连续正数序列</a></li>
+        
+        <li><a href="/posts/findnumberswithsum/">剑指offer：和为s的两个数字</a></li>
+        
+        <li><a href="/posts/meituan_stringsort/">美团2020校招笔试：字符串排序</a></li>
         
     </ul>
 </div>
@@ -210,11 +229,9 @@ if __name__ == '__main__':
                             
                             <ul class="clearfix">
                                 
-                                <li><a href="https://sysujayce.github.io/tags/leetcode">leetcode</a></li>
+                                <li><a href="https://sysujayce.github.io/tags/%E5%89%91%E6%8C%87offer">剑指offer</a></li>
                                 
-                                <li><a href="https://sysujayce.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">动态规划</a></li>
-                                
-                                <li><a href="https://sysujayce.github.io/tags/%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2">回文字符串</a></li>
+                                <li><a href="https://sysujayce.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97">位运算</a></li>
                                 
                             </ul>
                             

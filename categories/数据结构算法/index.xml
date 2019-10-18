@@ -6,10 +6,41 @@
     <description>Recent content in 数据结构算法 on Jayce Wong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 16 Oct 2019 22:09:09 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 18 Oct 2019 09:22:17 +0800</lastBuildDate>
     
 	<atom:link href="https://sysujayce.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>剑指offer：不用加减乘除做加法</title>
+      <link>https://sysujayce.github.io/posts/addwithoutelementaryarithmetic/</link>
+      <pubDate>Fri, 18 Oct 2019 09:22:17 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/addwithoutelementaryarithmetic/</guid>
+      <description>题目描述 写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。
+# -*- coding: utf-8 -*- # @Time : 2019-10-17 20:50 # @Author : Jayce Wong # @ProjectName : job # @FileName : addWithoutElementaryArithmetic.</description>
+    </item>
+    
+    <item>
+      <title>Python中的数字系统</title>
+      <link>https://sysujayce.github.io/posts/numericalsystem/</link>
+      <pubDate>Thu, 17 Oct 2019 20:47:39 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/numericalsystem/</guid>
+      <description>一、Python位运算操作符    操作符 意义     ~ 按位取反   | 按位或   &amp;amp; 按位与   ^ 按位异或   &amp;lt;&amp;lt; 左移   &amp;gt;&amp;gt; 右移    二、计算机中的原码、反码、补码  原码  原码是二进制数字的一种简单表示。例如8位有符号整数中，最高位为符号位，因此可以表示-127 ~ -0, +0 ~ 127共256个数字。</description>
+    </item>
+    
+    <item>
+      <title>剑指offer：不使用乘除、判断、循环进行求和</title>
+      <link>https://sysujayce.github.io/posts/novelsumsolution/</link>
+      <pubDate>Thu, 17 Oct 2019 11:19:11 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/novelsumsolution/</guid>
+      <description>题目描述 求1+2+3+&amp;hellip;+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。
+解题思路 解法1：递归 + 逻辑运算 关键在于利用逻辑与的短路规则来设置递归的出口。
+这里给出我写的Python实现以及参考的C++实现
+# -*- coding: utf-8 -*- # @Time : 2019-10-17 10:56 # @Author : Jayce Wong # @ProjectName : job # @FileName : sumSolution.</description>
+    </item>
     
     <item>
       <title>美团2020校招笔试：字符串排序</title>

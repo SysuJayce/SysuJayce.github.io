@@ -7,20 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>leetcode 516. 最长回文子序列 | Jayce Wong&#39;s Blog</title>
-    <meta property="og:title" content="leetcode 516. 最长回文子序列 - Jayce Wong&#39;s Blog">
+    <title>Python中的数字系统 | Jayce Wong&#39;s Blog</title>
+    <meta property="og:title" content="Python中的数字系统 - Jayce Wong&#39;s Blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content="2019-10-11T22:45:57&#43;08:00">
+    <meta property="article:published_time" content="2019-10-17T20:47:39&#43;08:00">
         
         
-    <meta property="article:modified_time" content="2019-10-11T22:45:57&#43;08:00">
+    <meta property="article:modified_time" content="2019-10-17T20:47:39&#43;08:00">
         
     <meta name="Keywords" content="Linux, Python, Machine Learning, Deep Learning, Data Mining">
-    <meta name="description" content="leetcode 516. 最长回文子序列">
+    <meta name="description" content="Python中的数字系统">
         
     <meta name="author" content="Jayce">
-    <meta property="og:url" content="https://sysujayce.github.io/posts/longestpalindromicsubsequence/">
+    <meta property="og:url" content="https://sysujayce.github.io/posts/numericalsystem/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
@@ -74,10 +74,10 @@
                 <div class="res-cons">
                     <article class="post">
                         <header>
-                            <h1 class="post-title">leetcode 516. 最长回文子序列</h1>
+                            <h1 class="post-title">Python中的数字系统</h1>
                         </header>
                         <date class="post-meta meta-date">
-                            2019年10月11日
+                            2019年10月17日
                         </date>
                         
                         <div class="post-meta">
@@ -96,89 +96,242 @@
                         <div class="post-content">
                             
 
-<h2 id="题目描述">题目描述</h2>
+<h3 id="一-python位运算操作符">一、Python位运算操作符</h3>
 
-<p>给定一个字符串<code>s</code>，找到其中最长的回文子序列</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作符</th>
+<th>意义</th>
+</tr>
+</thead>
 
-<p><strong>示例 1:</strong>
-输入:</p>
+<tbody>
+<tr>
+<td align="center">~</td>
+<td>按位取反</td>
+</tr>
 
-<pre><code>&quot;bbbab&quot;
-</code></pre>
+<tr>
+<td align="center">|</td>
+<td>按位或</td>
+</tr>
 
-<p>输出:</p>
+<tr>
+<td align="center">&amp;</td>
+<td>按位与</td>
+</tr>
 
-<pre><code>4
-</code></pre>
+<tr>
+<td align="center">^</td>
+<td>按位异或</td>
+</tr>
 
-<p>一个可能的最长回文子序列为 &ldquo;bbbb&rdquo;。</p>
+<tr>
+<td align="center">&lt;&lt;</td>
+<td>左移</td>
+</tr>
 
-<pre><code class="language-python"># -*- coding: utf-8 -*-
-# @Time         : 2019-10-11 11:58
-# @Author       : Jayce Wong
-# @ProjectName  : job
-# @FileName     : longestPalindromicSubsequence.py
-# @Blog         : https://sysujayce.github.io/
-# @Github       : https://github.com/SysuJayce
+<tr>
+<td align="center">&gt;&gt;</td>
+<td>右移</td>
+</tr>
+</tbody>
+</table>
 
+<h3 id="二-计算机中的原码-反码-补码">二、计算机中的原码、反码、补码</h3>
 
-class Solution:
+<ol>
+<li><h4 id="原码">原码</h4>
+
+<blockquote>
+<p>原码是二进制数字的一种简单表示。例如8位有符号整数中，最高位为符号位，因此可以表示<code>-127 ~ -0, +0 ~ 127</code>共256个数字。</p>
+</blockquote></li>
+
+<li><h4 id="反码">反码</h4>
+
+<blockquote>
+<p>反码是根据原码得到的。</p>
+
+<p>特别的，正数的反码和原码一样；</p>
+
+<p>负数的反码是对原码按位取反，符号位保持不变</p>
+</blockquote></li>
+
+<li><h4 id="补码">补码</h4>
+
+<blockquote>
+<p>补码是根据原码得到的。</p>
+
+<p>特别的，正数的补码和原码一样；</p>
+
+<p>负数的补码是反码+1，+1时产生进位则进位，跟正常的计算一样，但是符号位保持不变</p>
+</blockquote></li>
+</ol>
+
+<h4 id="三者的区别和联系">三者的区别和联系</h4>
+
+<p><strong>原码是为了方便人计算，补码是为了方便计算机计算，反码则是提供了原码到补码之间的转换</strong></p>
+
+<blockquote>
+<p>计算机里面只有加法没有减法，引入补码可以将减法转换为加法</p>
+
+<p>也就是说，<strong>计算机存储的都是补码</strong></p>
+
+<p>因此，8位二进制在计算机中表示的范围是<code>-128 ~ 127</code>，原码中的<code>-0</code>其实是<code>-128</code></p>
+</blockquote>
+
+<h3 id="三-python位运算的一些trick">三、Python位运算的一些trick</h3>
+
+<p><strong>数字在计算机中是以补码形式保存的，因此编程语言的位运算也是作用在补码上的</strong></p>
+
+<p>首先我们要知道的一个点就是：<code>bool(x) = False, if x == 0</code>，<code>bool(x) = True, if x != 0</code>，也就是说只有<code>0 和 0.0</code>的布尔值是<code>False</code>，其他数字(整数/浮点数)都是<code>True</code></p>
+
+<ol>
+<li><p>判断奇偶性</p>
+
+<pre><code class="language-python"># 在判断奇偶性的时候，可以使用 模2 判断余数是否为0的方法
+def isOdd(x):
+    return True if x % 2 != 0 else False
+    
+# 也可以将待判断的整数和1做位于运算，判断结果是否为1
+def isOdd(x):
+    return True if x &amp; 1 == 1 else False
+</code></pre></li>
+
+<li><p>位移代替乘2/除2</p>
+
+<pre><code class="language-python">a *= 2
+a &lt;&lt;= 1
+b /= 2
+b &gt;&gt;= 1
+</code></pre></li>
+
+<li><p>交换数值(实际上我没发现这个有多常用)</p>
+
+<pre><code class="language-python"># 法1
+a, b = b, a
+    
+# 法2
+temp = a
+a = b
+b = temp
+    
+# 法3
+a ^= b
+b ^= a
+a ^= b
+    
+&quot;&quot;&quot;
+首先a = a ^ b这个容易理解，
+然后b = b ^ a = b ^ a ^ b = a， 这里用到了x ^ x = 0，而 0 ^ y = y的原理，实现了b = a
+最后a = a ^ b = a ^ b ^ a = b， 道理跟上面一样
+&quot;&quot;&quot;
+</code></pre></li>
+
+<li><p>寻找只出现一次的数</p>
+
+<blockquote>
+<p>给定一个数组，共有2n + 1个数字，其中的n个数出现了2次，另一个数出现了1次，找出这个只出现一次的数</p>
+</blockquote>
+
+<pre><code class="language-python">def findUnique(arr):
     &quot;&quot;&quot;
-    dp[i][j]表示s[i: j + 1]的最长回文子序列长度
-
-    若s[i] == s[j]，则dp[i][j] = dp[i + 1][j - 1] + 2 【即将头尾去掉】
-    若s[i] != s[j]，则dp[i][j] = max(dp[i + 1][j], dp[i][j - 1]) 【即分别去头和去尾，求最大】
-
-    dp[i][i] = 1，因为s[i: i + 1]总是一个回文字符串，长度为1
+    由于x ^ x = 0，因此，出现偶数次的数字在异或过程中会被消除，最后异或剩下的结果就是只出现1次的数
     &quot;&quot;&quot;
-    def longestPalindromeSubseq(self, s: str) :
-        if len(s) &lt; 2 or s == s[:: -1]:
-            return len(s)
-
-        dp = [[0] * len(s) for _ in range(len(s))]
-        for j in range(len(s)):  # col
-            # 逐列填充矩阵
-            dp[j][j] = 1
-            for i in reversed(range(j)):  # row
-                # 从对角线开始往上填充
-                if s[i] == s[j]:
-                    dp[i][j] = dp[i + 1][j - 1] + 2
-                else:
-                    dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])
-        # 最后矩阵的右上角就是所求的长度
-        return dp[0][-1], self.findPalindrome(dp, s)
-
-    def findPalindrome(self, dp, s):
-        &quot;&quot;&quot;
-        要从已经计算好的状态矩阵中找出所有的最长公共子序列，我们需要关注的是当出现向上和向左都可以
-        的时候，需要保持方向的一致，向上就一直向上，向左就一直向左，否则会出现问题。
-        &quot;&quot;&quot;
-        rows, cols = len(dp), len(dp[0])
-        i, j = 0, cols - 1
-        ans = ''
-        while i &lt; rows and j &gt;= 0:
-            # 因为我们是反向查找的，所以加到前面去
-            if dp[i][j] == 0 or dp[i][j] &gt; dp[i + 1][j]:
-                ans = s[i] + ans
-                i += 1
-                j -= 1
-            else:
-                i += 1
-        return ans
-
-
-def main():
-    solution = Solution()
-    s = 'axbdba'
-    length, palindrome = solution.longestPalindromeSubseq(s)
-    print(length)
-    print(palindrome)
-
-
-if __name__ == '__main__':
-    main()
-
+    res = 0
+    for num in arr:
+        res ^= num
+    return res
 </code></pre>
+
+<blockquote>
+<p>给定一个数组，共有2n+2个数字，其中n个数出现了2次，另外2个数出现了1次，找出这2个只出现一次的数</p>
+</blockquote>
+
+<pre><code class="language-python">def findUnique2(arr):
+    flag = 0  # 记录只出现1次的这两个数字的异或值
+    for num in arr:
+        flag ^= num
+        
+    # flag中为1的位说明这两个数字在该位的数字不一样，
+    # 例如flag的第x位为1，那么a和b的第x位就一定不一样，一个为1一个为0
+    # 借助这个特点可以将原来的数组划分为2个子数组，分别包含a和b，以及对应的偶数个出现2次的数
+    idx = 0
+    while flag &amp; 1 != 1:
+        flag &gt;&gt;= 1
+        idx += 1
+            
+    # 根据前面找到的idx，判断所有数字中第idx位是0还是1，划分为两个子数组，
+    # 然后子数组内运行findUnique()的算法即可
+    a = b = 0
+    for num in arr:
+        if num &gt;&gt; idx &amp; 1:
+            a ^= num
+        else:
+            b ^= num
+    return a, b
+</code></pre></li>
+
+<li><p>计算一个数值的二进制表示中<code>1</code>的个数</p>
+
+<pre><code class="language-python">def numOfOne_shift_fail(x):
+    # 最简单的方法就是通过位移操作，判断最低位是否为1
+    # 但是这种方法是可以引发死循环的，如果输入是负数，那么符号位为1，如果不对位数添加界限的话，
+    # 循环将无法终止(这是因为Python不存在移位溢出)
+    count = 0
+    while x:
+        count += x &amp; 1
+        x &gt;&gt;= 1
+    return count
+    
+    
+def numOfOne_shift_success(x):
+    # 最简单的方法就是通过位移操作，判断最低位是否为1
+    # 但是这种方法是可以引发死循环的，如果输入是负数，那么符号位为1，如果不对位数添加界限的话，
+    # 循环将无法终止(这是因为Python不存在移位溢出)
+    count = 0
+    x &amp;= 0xffffffff  # 当然这里的界限可能不一定是32位，但只要对x添加了界限就不会引发死循环
+    while x:
+        count += x &amp; 1
+        x &gt;&gt;= 1
+    return count
+    
+    
+def numOfOne_advanced(x):
+    &quot;&quot;&quot;
+    将1个数字减1，那么其最低位的1会变为0，更低位的0会变为1，
+    也就是说，将1个数字减1，可以将其最右边的1变为0
+        
+    但是这样做的话变为0的那个1的右边原本的0就变为了1，这并不是我们想要的，
+    因此我们可以通过对x和x-1做按位与运算，保证原本为0的位保持不变，而最右边的1变为0.
+        
+    借助上面的算法，我们可以跳过二进制中很多个中间的0，每次将最右边的一个1置为0
+    &quot;&quot;&quot;
+    count = 0
+    x &amp;= 0xffffffff  # 首先还是得添加一个位数限制，不然在Python中会引发死循环
+    while x:
+        count += 1
+        x &amp;= x - 1
+    return count
+</code></pre></li>
+
+<li><p>二进制和十进制转换</p>
+
+<pre><code class="language-python">def bin2Int(x, bits=32):
+    # 如果是32位，或者64位，可以直接通过十六进制表示对x添加界限
+    # 更通用的方法是通过位移后减1来获取对应位数个1，然后做按位与运算
+    # bin()返回的是'0bxxxx'的形式，对我们来说有效的是xxxx这部分，所以需要先切片
+    # str.zfill(bits)的作用是将str右对齐，然后左边补0，直到长度为bits，
+    # 可以帮助我们将正数的位数补齐
+    return bin(((1 &lt;&lt; bits) - 1) &amp; x)[2:].zfill(bits)  # 更通用的做法，适用任何位数
+    return bin(x &amp; 0xffffffff)[2:].zfill(bits)  # 已知位数为32的情况下可以这样
+    
+def int2Bin(s, bits):
+    return int(s[1:], 2) - int(s[0]) * 0x80000000  # 已知位数为32的情况下可以这样
+    return int(s[1:], 2) - int(s[0]) * (1 &lt;&lt; bits)  # 更通用的做法，适用任何位数
+</code></pre></li>
+</ol>
 
                         </div>
 
@@ -186,7 +339,7 @@ if __name__ == '__main__':
 <div class="post-archive">
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://sysujayce.github.io/">Jayce</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://sysujayce.github.io/posts/longestpalindromicsubsequence/">https://sysujayce.github.io/posts/longestpalindromicsubsequence/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://sysujayce.github.io/posts/numericalsystem/">https://sysujayce.github.io/posts/numericalsystem/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -200,7 +353,15 @@ if __name__ == '__main__':
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/archives/">归档</a></li>
+        <li><a href="/posts/novelsumsolution/">剑指offer：不使用乘除、判断、循环进行求和</a></li>
+        
+        <li><a href="/posts/meituan_stringsort/">美团2020校招笔试：字符串排序</a></li>
+        
+        <li><a href="/posts/findcontinuoussequence/">剑指offer：和为S的连续正数序列</a></li>
+        
+        <li><a href="/posts/findnumberswithsum/">剑指offer：和为s的两个数字</a></li>
+        
+        <li><a href="/posts/continuedfraction/">比较两个连分数的大小</a></li>
         
     </ul>
 </div>
@@ -210,11 +371,7 @@ if __name__ == '__main__':
                             
                             <ul class="clearfix">
                                 
-                                <li><a href="https://sysujayce.github.io/tags/leetcode">leetcode</a></li>
-                                
-                                <li><a href="https://sysujayce.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">动态规划</a></li>
-                                
-                                <li><a href="https://sysujayce.github.io/tags/%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2">回文字符串</a></li>
+                                <li><a href="https://sysujayce.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97">位运算</a></li>
                                 
                             </ul>
                             

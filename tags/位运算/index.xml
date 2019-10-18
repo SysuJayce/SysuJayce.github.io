@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>位运算 on Jayce Wong&#39;s Blog</title>
+    <link>https://sysujayce.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/</link>
+    <description>Recent content in 位运算 on Jayce Wong&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 18 Oct 2019 09:22:17 +0800</lastBuildDate>
+    
+	<atom:link href="https://sysujayce.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>剑指offer：不用加减乘除做加法</title>
+      <link>https://sysujayce.github.io/posts/addwithoutelementaryarithmetic/</link>
+      <pubDate>Fri, 18 Oct 2019 09:22:17 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/addwithoutelementaryarithmetic/</guid>
+      <description>题目描述 写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。
+# -*- coding: utf-8 -*- # @Time : 2019-10-17 20:50 # @Author : Jayce Wong # @ProjectName : job # @FileName : addWithoutElementaryArithmetic.</description>
+    </item>
+    
+    <item>
+      <title>Python中的数字系统</title>
+      <link>https://sysujayce.github.io/posts/numericalsystem/</link>
+      <pubDate>Thu, 17 Oct 2019 20:47:39 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/numericalsystem/</guid>
+      <description>一、Python位运算操作符    操作符 意义     ~ 按位取反   | 按位或   &amp;amp; 按位与   ^ 按位异或   &amp;lt;&amp;lt; 左移   &amp;gt;&amp;gt; 右移    二、计算机中的原码、反码、补码  原码  原码是二进制数字的一种简单表示。例如8位有符号整数中，最高位为符号位，因此可以表示-127 ~ -0, +0 ~ 127共256个数字。</description>
+    </item>
+    
+  </channel>
+</rss>

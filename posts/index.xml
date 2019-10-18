@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Jayce Wong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 18 Oct 2019 09:22:17 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 19 Oct 2019 00:00:55 +0800</lastBuildDate>
     
 	<atom:link href="https://sysujayce.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>IsStraight</title>
+      <link>https://sysujayce.github.io/posts/isstraight/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:55 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/isstraight/</guid>
+      <description>题目描述 从扑克牌中随机抽若干张，判断是否组成一个顺子 (straight)，即判断这些牌的数字是否是连续的。特别地，A为1，J为11，Q为12，K为13，大小王以0表示，大小王可以看作赖子(可以变成1 ~ 13中的任意数字)。
+特别地，如果输入为空，返回False
+# -*- coding: utf-8 -*- # @Time : 2019-10-18 23:49 # @Author : Jayce Wong # @ProjectName : job # @FileName : isStraight.</description>
+    </item>
     
     <item>
       <title>剑指offer：不用加减乘除做加法</title>

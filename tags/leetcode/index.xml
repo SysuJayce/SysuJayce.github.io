@@ -6,10 +6,22 @@
     <description>Recent content in leetcode on Jayce Wong&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 14 Oct 2019 21:40:51 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 20 Oct 2019 17:18:26 +0800</lastBuildDate>
     
 	<atom:link href="https://sysujayce.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>leetcode周赛：抛掷硬币</title>
+      <link>https://sysujayce.github.io/posts/tosscoin/</link>
+      <pubDate>Sun, 20 Oct 2019 17:18:26 +0800</pubDate>
+      
+      <guid>https://sysujayce.github.io/posts/tosscoin/</guid>
+      <description>5090. 抛掷硬币 有一些不规则的硬币。在这些硬币中，prob[i] 表示第 i 枚硬币正面朝上的概率。
+请对每一枚硬币抛掷 一次，然后返回正面朝上的硬币数等于 target 的概率。
+示例 1：
+输入：prob = [0.4], target = 1 输出：0.40000  示例 2：</description>
+    </item>
     
     <item>
       <title>leetcode 1143. 最长公共子序列</title>
